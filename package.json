@@ -4,12 +4,16 @@
     "lint-staged": "^16.4.0"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
+    "client/**/*.{ts,tsx}": [
+      "npm --prefix client run lint"
+    ],
+    "server/**/*.{ts}": [
+      "npm --prefix server run lint"
     ]
   },
   "scripts": {
-    "prepare": "husky"
+    "lint": "npm run lint:client && npm run lint:server",
+    "lint:client": "npm --prefix client run lint",
+    "lint:server": "npm --prefix server run lint"
   }
 }
