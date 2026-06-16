@@ -1,7 +1,8 @@
 export const ROUTES = {
   ROOT: '/',
-  USERS: '',
+  USERS: 'users',
   REGISTER: 'register',
+  VERIFY: 'verify/:token',
   LOGIN: 'login',
   NOT_FOUND: '*',
 };

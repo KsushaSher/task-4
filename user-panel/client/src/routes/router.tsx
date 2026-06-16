@@ -3,6 +3,8 @@ import NotFoundPage from '../pages/NotFoundPage';
 import { ROUTES } from '../shared/constants/apiRoutes';
 import RegisterPage from '../pages/RegisterPage';
 import Layout from '../pages/Layout';
+import VerifyEmailPage from '../pages/VerifyEmailPage';
+import LoginPage from '../pages/LoginPage';
 
 const router = createBrowserRouter([
   {
@@ -17,10 +19,14 @@ const router = createBrowserRouter([
         path: ROUTES.REGISTER,
         Component: RegisterPage,
       },
-      // {
-      //   path: ROUTES.LOGIN,
-      //   Component: LoginPage,
-      // },
+      {
+        path: ROUTES.LOGIN,
+        Component: LoginPage,
+      },
+      {
+        path: ROUTES.VERIFY,
+        Component: VerifyEmailPage,
+      },
     ],
   },
   {

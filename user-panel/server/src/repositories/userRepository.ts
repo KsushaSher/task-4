@@ -43,3 +43,29 @@ export const createUser = async ({
     createdAt,
   ]);
 };
+
+export const findByVerificationToken = async (token: string) => {
+  const result = await pool.query(
+    `
+      SELECT *
+      FROM users
+      WHERE verification_token = $1
+    `,
+    [token]
+  );
+
+  return result.rows[0];
+};
+
+export const verifyUserEmail = async (userId: string) => {
+  await pool.query(
+    `
+      UPDATE users
+      SET
+        status = 'active',
+        verification_token = NULL
+      WHERE id = $1
+    `,
+    [userId]
+  );
+};

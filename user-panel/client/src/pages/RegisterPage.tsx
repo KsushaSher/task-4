@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { register } from '../api/authApi';
 import { FormInput } from '../components/FormInput';
 
-export default function RegisterPage() {
+const RegisterPage = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -81,4 +81,5 @@ export default function RegisterPage() {
       </div>
     </div>
   );
-}
+};
+export default RegisterPage;
