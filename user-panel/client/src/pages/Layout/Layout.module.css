@@ -1,0 +1,29 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto;
+  padding: 0 16px;
+
+  @media (width <= 480px) {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.header {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  font-weight: bold;
+  font-size: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 70px;
+
+  background-color: rgb(210, 231, 251);
+}

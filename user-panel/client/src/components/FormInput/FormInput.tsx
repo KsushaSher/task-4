@@ -1,0 +1,26 @@
+interface FormInputContent {
+  label: string;
+  type: string;
+  value: string;
+  onChange: (value: string) => void;
+}
+
+const FormInput = ({ label, type, value, onChange }: FormInputContent) => {
+  return (
+    <div className="mb-3">
+      <label htmlFor={label} className="form-label">
+        {label}
+      </label>
+
+      <input
+        id={label}
+        type={type}
+        className="form-control"
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        required
+      />
+    </div>
+  );
+};
+export default FormInput;

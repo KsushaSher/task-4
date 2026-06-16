@@ -1,0 +1,32 @@
+import { createBrowserRouter } from 'react-router';
+import NotFoundPage from '../pages/NotFoundPage';
+import { ROUTES } from '../shared/constants/apiRoutes';
+import RegisterPage from '../pages/RegisterPage';
+import Layout from '../pages/Layout';
+
+const router = createBrowserRouter([
+  {
+    path: ROUTES.ROOT,
+    Component: Layout,
+    children: [
+      // {
+      //   path: ROUTES.USERS,
+      //   Component: UsersPage,
+      // },
+      {
+        path: ROUTES.REGISTER,
+        Component: RegisterPage,
+      },
+      // {
+      //   path: ROUTES.LOGIN,
+      //   Component: LoginPage,
+      // },
+    ],
+  },
+  {
+    path: ROUTES.NOT_FOUND,
+    Component: NotFoundPage,
+  },
+]);
+
+export default router;

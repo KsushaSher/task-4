@@ -1,7 +1,7 @@
 import app from './app';
 import { pool } from './config/db';
 
-const PORT = 5000;
+const PORT = 8888;
 
 pool
   .query('SELECT NOW()')
