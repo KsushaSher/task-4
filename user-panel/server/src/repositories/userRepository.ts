@@ -69,3 +69,17 @@ export const verifyUserEmail = async (userId: string) => {
     [userId]
   );
 };
+
+export async function findUserByEmail(email: string) {
+  const result = await pool.query('SELECT * FROM users WHERE email = $1', [
+    email,
+  ]);
+
+  return result.rows[0];
+}
+
+export async function updateLastLogin(userId: string) {
+  await pool.query('UPDATE users SET last_login = NOW() WHERE id = $1', [
+    userId,
+  ]);
+}

@@ -5,16 +5,17 @@ import RegisterPage from '../pages/RegisterPage';
 import Layout from '../pages/Layout';
 import VerifyEmailPage from '../pages/VerifyEmailPage';
 import LoginPage from '../pages/LoginPage';
+import UsersPage from '../pages/UsersPage';
 
 const router = createBrowserRouter([
   {
     path: ROUTES.ROOT,
     Component: Layout,
     children: [
-      // {
-      //   path: ROUTES.USERS,
-      //   Component: UsersPage,
-      // },
+      {
+        path: ROUTES.USERS,
+        Component: UsersPage,
+      },
       {
         path: ROUTES.REGISTER,
         Component: RegisterPage,

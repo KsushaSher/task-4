@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import { registerUser } from '../services/authService';
 import { DatabaseError } from 'pg';
 import { verifyEmail } from '../services/authService';
+import { loginService } from '../services/authService';
 
 export const register = async (req: Request, res: Response) => {
   try {
@@ -36,3 +37,17 @@ export const verifyEmailController = async (
     next(error);
   }
 };
+
+export async function login(req: Request, res: Response, next: NextFunction) {
+  try {
+    const { email, password } = req.body;
+    const result = await loginService({ email, password });
+
+    res.json({
+      success: true,
+      ...result,
+    });
+  } catch (err) {
+    next(err);
+  }
+}
