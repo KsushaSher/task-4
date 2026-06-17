@@ -89,3 +89,21 @@ export async function findUserById(id: string) {
 
   return result.rows[0];
 }
+
+export async function getAllUsers() {
+  const result = await pool.query(
+    `
+    SELECT
+      id,
+      name,
+      email,
+      status,
+      created_at,
+      last_login
+    FROM users
+    ORDER BY last_login DESC NULLS LAST
+    `
+  );
+
+  return result.rows;
+}

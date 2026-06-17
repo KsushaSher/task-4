@@ -1,5 +1,6 @@
 import { Response, NextFunction } from 'express';
 import { AuthRequest } from '../types/auth.types';
+import { getUsersService } from '../services/userService';
 
 export async function getUsers(
   req: AuthRequest,
@@ -7,10 +8,11 @@ export async function getUsers(
   next: NextFunction
 ) {
   try {
+    const users = await getUsersService();
+
     res.json({
       success: true,
-      message: 'Protected route works',
-      currentUser: req.user,
+      users,
     });
   } catch (error) {
     next(error);
