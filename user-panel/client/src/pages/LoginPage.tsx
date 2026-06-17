@@ -61,7 +61,10 @@ const LoginPage = () => {
             >
               {loading ? 'Signing in...' : 'Login'}
             </button>
-            <Link to="/register">Create account</Link>
+            <div className="mt-5">
+              {' '}
+              Don't have an account? <Link to="/register">Create account</Link>
+            </div>
           </form>
         </div>
       </div>

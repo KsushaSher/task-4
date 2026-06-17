@@ -1,14 +1,5 @@
 import { pool } from '../config/db';
-
-interface CreateUserParams {
-  id: string;
-  name: string;
-  email: string;
-  passwordHash: string;
-  verificationToken: string;
-  status: string;
-  createdAt: Date;
-}
+import { CreateUserParams } from '../types/auth.types';
 
 export const createUser = async ({
   id,
@@ -17,6 +8,7 @@ export const createUser = async ({
   passwordHash,
   verificationToken,
   status,
+  isBlocked,
   createdAt,
 }: CreateUserParams) => {
   const query = `
@@ -27,12 +19,12 @@ export const createUser = async ({
       password_hash,
       verification_token,
       status,
+      is_blocked,
       created_at
     )
-    VALUES ($1, $2, $3, $4, $5, $6, $7)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
     RETURNING *
   `;
-
   await pool.query(query, [
     id,
     name,
@@ -40,6 +32,7 @@ export const createUser = async ({
     passwordHash,
     verificationToken,
     status,
+    isBlocked,
     createdAt,
   ]);
 };
@@ -98,6 +91,7 @@ export async function getAllUsers() {
       name,
       email,
       status,
+      is_blocked,
       created_at,
       last_login
     FROM users
@@ -106,4 +100,40 @@ export async function getAllUsers() {
   );
 
   return result.rows;
+}
+
+export async function blockUsers(ids: number[]) {
+  await pool.query(
+    `
+    UPDATE users
+    SET is_blocked = TRUE
+    WHERE id = ANY($1)
+    `,
+    [ids]
+  );
+}
+export async function unblockUsers(ids: number[]) {
+  await pool.query(
+    `
+    UPDATE users
+    SET is_blocked = FALSE
+    WHERE id = ANY($1)
+    `,
+    [ids]
+  );
+}
+export async function deleteUsers(ids: number[]) {
+  await pool.query(
+    `
+    DELETE FROM users
+    WHERE id = ANY($1)
+    `,
+    [ids]
+  );
+}
+export async function deleteUnverifiedUsers() {
+  await pool.query(`
+    DELETE FROM users
+    WHERE status = 'unverified'
+  `);
 }

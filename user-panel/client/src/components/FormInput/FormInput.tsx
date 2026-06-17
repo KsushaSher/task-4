@@ -1,9 +1,4 @@
-interface FormInputContent {
-  label: string;
-  type: string;
-  value: string;
-  onChange: (value: string) => void;
-}
+import type { FormInputContent } from '../../types/auth';
 
 const FormInput = ({ label, type, value, onChange }: FormInputContent) => {
   return (

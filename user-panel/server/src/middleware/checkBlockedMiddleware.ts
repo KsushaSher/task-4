@@ -24,10 +24,18 @@ export async function checkBlockedMiddleware(
       });
     }
 
-    if (user.status === 'blocked') {
-      return res.status(403).json({
+    // if (user.status === 'blocked') {
+    //   req.user = undefined;
+    //   return res.status(401).json({
+    //     success: false,
+    //     message: 'Unauthorized',
+    //   });
+    // }
+
+    if (user.is_blocked) {
+      return res.status(401).json({
         success: false,
-        message: 'User is blocked',
+        message: 'Unauthorized',
       });
     }
 

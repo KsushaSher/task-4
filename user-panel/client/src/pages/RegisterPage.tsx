@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { register } from '../api/authApi';
 import { FormInput } from '../components/FormInput';
+import { Link } from 'react-router-dom';
+import { ROUTES } from '../shared/constants/apiRoutes';
 
 const RegisterPage = () => {
   const [name, setName] = useState('');
@@ -77,6 +79,9 @@ const RegisterPage = () => {
               Register
             </button>
           </form>
+          <div className="mt-5">
+            <Link to={ROUTES.LOGIN}>Login</Link>
+          </div>
         </div>
       </div>
     </div>

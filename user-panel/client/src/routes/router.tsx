@@ -6,6 +6,7 @@ import Layout from '../pages/Layout';
 import VerifyEmailPage from '../pages/VerifyEmailPage';
 import LoginPage from '../pages/LoginPage';
 import UsersPage from '../pages/UsersPage';
+import ProtectedRoute from '../components/ProtectedRoute';
 
 const router = createBrowserRouter([
   {
@@ -14,7 +15,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: ROUTES.USERS,
-        Component: UsersPage,
+        element: (
+          <ProtectedRoute>
+            <UsersPage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: ROUTES.REGISTER,

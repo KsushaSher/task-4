@@ -12,17 +12,7 @@ import {
 } from '../repositories/userRepository';
 import { comparePassword } from '../utils/password';
 import { generateToken } from '../utils/jwt';
-
-interface RegisterParams {
-  name: string;
-  email: string;
-  password: string;
-}
-
-interface LoginDto {
-  email: string;
-  password: string;
-}
+import { LoginDto, RegisterParams } from '../types/auth.types';
 
 export const registerUser = async ({
   name,
@@ -40,6 +30,7 @@ export const registerUser = async ({
     passwordHash,
     verificationToken,
     status: 'unverified',
+    isBlocked: false,
     createdAt: new Date(),
   });
   sendVerificationEmail(email, verificationToken).catch(console.error);
@@ -80,7 +71,7 @@ export async function loginService({ email, password }: LoginDto) {
     throw new Error('Invalid email or password');
   }
 
-  if (user.status === 'blocked') {
+  if (user.is_blocked) {
     throw new Error('User is blocked');
   }
 

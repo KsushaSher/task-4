@@ -1,5 +1,7 @@
 import type { RegisterRequest, RegisterResponse } from '../types/auth';
 
+const API_URL = 'http://localhost:8888/api/auth';
+
 export const register = async (
   data: RegisterRequest
 ): Promise<RegisterResponse> => {
@@ -19,8 +21,6 @@ export const register = async (
 
   return result;
 };
-
-const API_URL = 'http://localhost:8888/api/auth';
 
 export async function login(email: string, password: string) {
   const response = await fetch(`${API_URL}/login`, {

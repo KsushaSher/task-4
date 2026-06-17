@@ -1,11 +1,6 @@
 import { Response, NextFunction } from 'express';
 import { verifyToken } from '../utils/jwt';
-import { AuthRequest } from '../types/auth.types';
-
-interface JwtPayload {
-  userId: string;
-  email: string;
-}
+import { AuthRequest, JwtPayload } from '../types/auth.types';
 
 export async function authMiddleware(
   req: AuthRequest,
