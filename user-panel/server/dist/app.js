@@ -8,6 +8,7 @@ const authRoutes_1 = __importDefault(require("./routes/authRoutes"));
 const userRoutes_1 = __importDefault(require("./routes/userRoutes"));
 const cors_1 = __importDefault(require("cors"));
 const dotenv_1 = __importDefault(require("dotenv"));
+const path_1 = __importDefault(require("path"));
 const errorMiddleware_1 = require("./middleware/errorMiddleware");
 const constants_1 = require("./utils/constants");
 dotenv_1.default.config();
@@ -19,5 +20,9 @@ app.use((0, cors_1.default)({
 app.use(express_1.default.json());
 app.use('/api/auth', authRoutes_1.default);
 app.use('/api/users', userRoutes_1.default);
+app.use(express_1.default.static(path_1.default.join(__dirname, '../../client/dist')));
+app.get('/{*splat}', (_req, res) => {
+    res.sendFile(path_1.default.join(__dirname, '../../client/dist/index.html'));
+});
 app.use(errorMiddleware_1.errorMiddleware);
 exports.default = app;

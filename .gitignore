@@ -3,8 +3,8 @@ client/node_modules
 server/node_modules
 
 # Build
-client/dist
-server/dist
+user-panel/client/dist
+user-panel/server/dist
 
 # Environment variables
 server/.env
