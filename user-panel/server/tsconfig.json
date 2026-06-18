@@ -3,7 +3,9 @@
     "target": "ES2022",
     "module": "CommonJS",
     "esModuleInterop": true,
-    "strict": true
+    "strict": true,
+    "outDir": "./dist",
+    "rootDir": "./src"
   },
   "include": ["src"]
 }
