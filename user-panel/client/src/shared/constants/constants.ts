@@ -1,4 +1,4 @@
-export const BASE_URL_SERVER = 'http://localhost:8888/api';
+export const BASE_URL_SERVER = import.meta.env.VITE_API_URL;
 export const API_URL_USERS = `${BASE_URL_SERVER}/users`;
 export const API_URL_AUTH = `${BASE_URL_SERVER}/auth`;
 

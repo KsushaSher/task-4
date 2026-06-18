@@ -12,6 +12,8 @@
     ]
   },
   "scripts": {
+    "build": "cd user-panel/client && npm i && npm run build && cd ../server && npm i && npm run build",
+    "start": "cd user-panel/server && npm run start",
     "lint": "npm run lint:client && npm run lint:server",
     "lint:client": "npm --prefix client run lint",
     "lint:server": "npm --prefix server run lint"
