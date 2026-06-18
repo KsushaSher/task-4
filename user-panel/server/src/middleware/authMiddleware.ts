@@ -2,11 +2,11 @@ import { Response, NextFunction } from 'express';
 import { verifyToken } from '../utils/jwt';
 import { AuthRequest, JwtPayload } from '../types/auth.types';
 
-export async function authMiddleware(
+export const authMiddleware = async (
   req: AuthRequest,
   res: Response,
   next: NextFunction
-) {
+) => {
   try {
     const authHeader = req.headers.authorization;
 
@@ -40,4 +40,4 @@ export async function authMiddleware(
       message: 'Invalid token',
     });
   }
-}
+};

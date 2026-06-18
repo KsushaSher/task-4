@@ -8,11 +8,11 @@ import {
   unblockUsersService,
 } from '../services/userService';
 
-export async function getUsers(
+export const getUsers = async (
   req: AuthRequest,
   res: Response,
   next: NextFunction
-) {
+) => {
   try {
     const users = await getUsersService();
 
@@ -23,13 +23,13 @@ export async function getUsers(
   } catch (error) {
     next(error);
   }
-}
+};
 
-export async function blockUsers(
+export const blockUsers = async (
   req: AuthRequest,
   res: Response,
   next: NextFunction
-) {
+) => {
   try {
     const { ids } = req.body;
 
@@ -42,13 +42,13 @@ export async function blockUsers(
   } catch (error) {
     next(error);
   }
-}
+};
 
-export async function unblockUsers(
+export const unblockUsers = async (
   req: AuthRequest,
   res: Response,
   next: NextFunction
-) {
+) => {
   try {
     const { ids } = req.body;
 
@@ -61,13 +61,13 @@ export async function unblockUsers(
   } catch (error) {
     next(error);
   }
-}
+};
 
-export async function deleteUsers(
+export const deleteUsers = async (
   req: AuthRequest,
   res: Response,
   next: NextFunction
-) {
+) => {
   try {
     const { ids } = req.body;
 
@@ -80,13 +80,13 @@ export async function deleteUsers(
   } catch (error) {
     next(error);
   }
-}
+};
 
-export async function deleteUnverifiedUsers(
+export const deleteUnverifiedUsers = async (
   req: AuthRequest,
   res: Response,
   next: NextFunction
-) {
+) => {
   try {
     await deleteUnverifiedUsersService();
 
@@ -97,4 +97,4 @@ export async function deleteUnverifiedUsers(
   } catch (error) {
     next(error);
   }
-}
+};

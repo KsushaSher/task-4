@@ -58,7 +58,7 @@ export const verifyEmail = async (token: string) => {
   };
 };
 
-export async function loginService({ email, password }: LoginDto) {
+export const loginService = async ({ email, password }: LoginDto) => {
   const user = await findUserByEmail(email);
 
   if (!user) {
@@ -91,4 +91,4 @@ export async function loginService({ email, password }: LoginDto) {
       status: user.status,
     },
   };
-}
+};

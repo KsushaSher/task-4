@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-function VerifyEmailPage() {
+const VerifyEmailPage = () => {
   const { token } = useParams();
   const navigate = useNavigate();
 
@@ -40,6 +40,6 @@ function VerifyEmailPage() {
       <h3>{message}</h3>
     </div>
   );
-}
+};
 
 export default VerifyEmailPage;

@@ -1,4 +1,5 @@
-const API_URL = 'http://localhost:8888/api/users';
+import { API_URL_USERS } from '../shared/constants';
+
 export class ApiError extends Error {
   status: number;
 
@@ -9,7 +10,7 @@ export class ApiError extends Error {
 }
 
 export async function getUsers(token: string) {
-  const response = await fetch(API_URL, {
+  const response = await fetch(API_URL_USERS, {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${token}`,
@@ -29,7 +30,7 @@ export async function getUsers(token: string) {
 }
 
 export async function blockUsers(ids: number[], token: string) {
-  const response = await fetch(`${API_URL}/block`, {
+  const response = await fetch(`${API_URL_USERS}/block`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -48,7 +49,7 @@ export async function blockUsers(ids: number[], token: string) {
 }
 
 export async function unblockUsers(ids: number[], token: string) {
-  const response = await fetch(`${API_URL}/unblock`, {
+  const response = await fetch(`${API_URL_USERS}/unblock`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -67,7 +68,7 @@ export async function unblockUsers(ids: number[], token: string) {
 }
 
 export async function deleteUsers(ids: number[], token: string) {
-  const response = await fetch(API_URL, {
+  const response = await fetch(API_URL_USERS, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -86,7 +87,7 @@ export async function deleteUsers(ids: number[], token: string) {
 }
 
 export async function deleteUnverifiedUsers(ids: number[], token: string) {
-  const response = await fetch(`${API_URL}/unverified`, {
+  const response = await fetch(`${API_URL_USERS}/unverified`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',

@@ -23,7 +23,7 @@
   align-items: center;
   justify-content: center;
 
-  height: 70px;
-
-  background-color: rgb(210, 231, 251);
+  height: 100px;
+  background: linear-gradient(rgb(209, 219, 236), rgb(255, 255, 255));
+  color: rgb(166, 178, 207);
 }

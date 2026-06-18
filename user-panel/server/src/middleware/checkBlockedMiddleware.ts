@@ -2,11 +2,11 @@ import { Response, NextFunction } from 'express';
 import { findUserById } from '../repositories/userRepository';
 import { AuthRequest } from '../types/auth.types';
 
-export async function checkBlockedMiddleware(
+export const checkBlockedMiddleware = async (
   req: AuthRequest,
   res: Response,
   next: NextFunction
-) {
+) => {
   try {
     if (!req.user) {
       return res.status(401).json({
@@ -24,14 +24,6 @@ export async function checkBlockedMiddleware(
       });
     }
 
-    // if (user.status === 'blocked') {
-    //   req.user = undefined;
-    //   return res.status(401).json({
-    //     success: false,
-    //     message: 'Unauthorized',
-    //   });
-    // }
-
     if (user.is_blocked) {
       return res.status(401).json({
         success: false,
@@ -46,4 +38,4 @@ export async function checkBlockedMiddleware(
       message: 'Server error',
     });
   }
-}
+};

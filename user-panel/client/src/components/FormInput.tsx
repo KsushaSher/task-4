@@ -1,4 +1,4 @@
-import type { FormInputContent } from '../../types/auth';
+import type { FormInputContent } from '../types/auth';
 
 const FormInput = ({ label, type, value, onChange }: FormInputContent) => {
   return (

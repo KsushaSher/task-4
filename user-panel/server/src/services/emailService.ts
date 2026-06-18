@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer';
+import { BASE_URL_CLIENT } from '../utils/constants';
 
 const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
@@ -11,7 +12,7 @@ const transporter = nodemailer.createTransport({
 });
 
 export const sendVerificationEmail = async (email: string, token: string) => {
-  const verificationLink = `http://localhost:5173/verify/${token}`;
+  const verificationLink = `${BASE_URL_CLIENT}/verify/${token}`;
 
   await transporter.sendMail({
     to: email,

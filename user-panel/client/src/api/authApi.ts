@@ -1,11 +1,10 @@
+import { API_URL_AUTH } from '../shared/constants';
 import type { RegisterRequest, RegisterResponse } from '../types/auth';
-
-const API_URL = 'http://localhost:8888/api/auth';
 
 export const register = async (
   data: RegisterRequest
 ): Promise<RegisterResponse> => {
-  const response = await fetch('http://localhost:8888/api/auth/register', {
+  const response = await fetch(`${API_URL_AUTH}/register`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -22,8 +21,8 @@ export const register = async (
   return result;
 };
 
-export async function login(email: string, password: string) {
-  const response = await fetch(`${API_URL}/login`, {
+export const login = async (email: string, password: string) => {
+  const response = await fetch(`${API_URL_AUTH}/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -41,4 +40,4 @@ export async function login(email: string, password: string) {
   }
 
   return data;
-}
+};

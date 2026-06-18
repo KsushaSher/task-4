@@ -1,24 +1,24 @@
 import { getAllUsers } from '../repositories/userRepository';
 import * as userRepository from '../repositories/userRepository';
 
-export async function getUsersService() {
+export const getUsersService = async () => {
   const users = await getAllUsers();
 
   return users;
-}
+};
 
-export async function blockUsersService(ids: number[]) {
+export const blockUsersService = async (ids: number[]) => {
   await userRepository.blockUsers(ids);
-}
+};
 
-export async function unblockUsersService(ids: number[]) {
+export const unblockUsersService = async (ids: number[]) => {
   await userRepository.unblockUsers(ids);
-}
+};
 
-export async function deleteUsersService(ids: number[]) {
+export const deleteUsersService = async (ids: number[]) => {
   await userRepository.deleteUsers(ids);
-}
+};
 
-export async function deleteUnverifiedUsersService() {
+export const deleteUnverifiedUsersService = async () => {
   await userRepository.deleteUnverifiedUsers();
-}
+};

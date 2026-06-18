@@ -1,12 +1,12 @@
 import { createBrowserRouter } from 'react-router';
 import NotFoundPage from '../pages/NotFoundPage';
-import { ROUTES } from '../shared/constants/apiRoutes';
 import RegisterPage from '../pages/RegisterPage';
 import Layout from '../pages/Layout';
 import VerifyEmailPage from '../pages/VerifyEmailPage';
 import LoginPage from '../pages/LoginPage';
 import UsersPage from '../pages/UsersPage';
 import ProtectedRoute from '../components/ProtectedRoute';
+import { ROUTES } from '../shared/constants';
 
 const router = createBrowserRouter([
   {

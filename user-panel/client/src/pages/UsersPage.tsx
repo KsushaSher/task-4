@@ -10,11 +10,11 @@ import {
 } from '../api/usersApi';
 import UsersTable from '../components/UserTable';
 import type { User } from '../types/user';
-import { ROUTES } from '../shared/constants/apiRoutes';
 import UsersToolbar from '../components/UsersToolbar';
-import { getCurrentUserId } from '../utils/getCurrentUserId';
+import getCurrentUserId from '../shared/utils/getCurrentUserId';
+import { ROUTES } from '../shared/constants';
 
-export default function UsersPage() {
+const UsersPage = () => {
   const navigate = useNavigate();
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
@@ -185,4 +185,5 @@ export default function UsersPage() {
       )}
     </div>
   );
-}
+};
+export default UsersPage;

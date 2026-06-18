@@ -63,27 +63,27 @@ export const verifyUserEmail = async (userId: string) => {
   );
 };
 
-export async function findUserByEmail(email: string) {
+export const findUserByEmail = async (email: string) => {
   const result = await pool.query('SELECT * FROM users WHERE email = $1', [
     email,
   ]);
 
   return result.rows[0];
-}
+};
 
-export async function updateLastLogin(userId: string) {
+export const updateLastLogin = async (userId: string) => {
   await pool.query('UPDATE users SET last_login = NOW() WHERE id = $1', [
     userId,
   ]);
-}
+};
 
-export async function findUserById(id: string) {
+export const findUserById = async (id: string) => {
   const result = await pool.query('SELECT * FROM users WHERE id = $1', [id]);
 
   return result.rows[0];
-}
+};
 
-export async function getAllUsers() {
+export const getAllUsers = async () => {
   const result = await pool.query(
     `
     SELECT
@@ -100,9 +100,9 @@ export async function getAllUsers() {
   );
 
   return result.rows;
-}
+};
 
-export async function blockUsers(ids: number[]) {
+export const blockUsers = async (ids: number[]) => {
   await pool.query(
     `
     UPDATE users
@@ -111,8 +111,9 @@ export async function blockUsers(ids: number[]) {
     `,
     [ids]
   );
-}
-export async function unblockUsers(ids: number[]) {
+};
+
+export const unblockUsers = async (ids: number[]) => {
   await pool.query(
     `
     UPDATE users
@@ -121,8 +122,9 @@ export async function unblockUsers(ids: number[]) {
     `,
     [ids]
   );
-}
-export async function deleteUsers(ids: number[]) {
+};
+
+export const deleteUsers = async (ids: number[]) => {
   await pool.query(
     `
     DELETE FROM users
@@ -130,10 +132,11 @@ export async function deleteUsers(ids: number[]) {
     `,
     [ids]
   );
-}
-export async function deleteUnverifiedUsers() {
+};
+
+export const deleteUnverifiedUsers = async () => {
   await pool.query(`
     DELETE FROM users
     WHERE status = 'unverified'
   `);
-}
+};

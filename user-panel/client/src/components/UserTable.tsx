@@ -1,11 +1,11 @@
 import type { UsersTableProps } from '../types/user';
 
-export default function UsersTable({
+const UsersTable = ({
   users,
   selectedIds,
   toggleUser,
   toggleSelectAll,
-}: UsersTableProps) {
+}: UsersTableProps) => {
   return (
     <div className="table-responsive">
       <table className="table table-striped table-bordered align-middle">
@@ -69,4 +69,6 @@ export default function UsersTable({
       </table>
     </div>
   );
-}
+};
+
+export default UsersTable;

@@ -5,7 +5,7 @@ type JwtPayload = {
   email: string;
 };
 
-export function getCurrentUserId(): number | null {
+const getCurrentUserId = (): number | null => {
   const token = localStorage.getItem('token');
 
   if (!token) {
@@ -19,4 +19,6 @@ export function getCurrentUserId(): number | null {
   } catch {
     return null;
   }
-}
+};
+
+export default getCurrentUserId;

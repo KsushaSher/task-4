@@ -38,7 +38,11 @@ export const verifyEmailController = async (
   }
 };
 
-export async function login(req: Request, res: Response, next: NextFunction) {
+export const login = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const { email, password } = req.body;
     const result = await loginService({ email, password });
@@ -50,4 +54,4 @@ export async function login(req: Request, res: Response, next: NextFunction) {
   } catch (err) {
     next(err);
   }
-}
+};

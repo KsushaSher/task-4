@@ -8,13 +8,13 @@ interface Props {
   onDeleteUnverified: () => void;
 }
 
-export default function UsersToolbar({
+const UsersToolbar = ({
   selectedCount,
   onBlock,
   onUnblock,
   onDelete,
   onDeleteUnverified,
-}: Props) {
+}: Props) => {
   const disabled = selectedCount === 0;
 
   return (
@@ -50,4 +50,6 @@ export default function UsersToolbar({
       </button>
     </div>
   );
-}
+};
+
+export default UsersToolbar;

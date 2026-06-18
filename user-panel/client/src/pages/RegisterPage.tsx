@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { register } from '../api/authApi';
-import { FormInput } from '../components/FormInput';
 import { Link } from 'react-router-dom';
-import { ROUTES } from '../shared/constants/apiRoutes';
+import FormInput from '../components/FormInput';
+import { ROUTES } from '../shared/constants';
 
 const RegisterPage = () => {
   const [name, setName] = useState('');
