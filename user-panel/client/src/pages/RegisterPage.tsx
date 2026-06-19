@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { register } from '../api/authApi';
 import { Link } from 'react-router-dom';
-import FormInput from '../components/FormInput';
 import { ROUTES } from '../shared/constants';
+import RegistrationSuccess from '../components/RegistrationSuccess';
+import RegisterForm from '../components/RegisterForm';
 
 const RegisterPage = () => {
   const [name, setName] = useState('');
@@ -56,29 +57,19 @@ const RegisterPage = () => {
             </div>
           )}
 
-          <form onSubmit={handleSubmit}>
-            <FormInput
-              label="Name"
-              type="text"
-              value={name}
-              onChange={setName}
+          {successMessage ? (
+            <RegistrationSuccess />
+          ) : (
+            <RegisterForm
+              name={name}
+              email={email}
+              password={password}
+              setName={setName}
+              setEmail={setEmail}
+              setPassword={setPassword}
+              onSubmit={handleSubmit}
             />
-            <FormInput
-              label="Email"
-              type="email"
-              value={email}
-              onChange={setEmail}
-            />
-            <FormInput
-              label="Password"
-              type="password"
-              value={password}
-              onChange={setPassword}
-            />
-            <button type="submit" className="btn btn-primary w-100">
-              Register
-            </button>
-          </form>
+          )}
           <div className="mt-5">
             <Link to={ROUTES.LOGIN}>Login</Link>
           </div>

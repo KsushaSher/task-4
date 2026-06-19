@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router';
+import { createBrowserRouter, Navigate } from 'react-router';
 import NotFoundPage from '../pages/NotFoundPage';
 import RegisterPage from '../pages/RegisterPage';
 import Layout from '../pages/Layout';
@@ -13,6 +13,10 @@ const router = createBrowserRouter([
     path: ROUTES.ROOT,
     Component: Layout,
     children: [
+      {
+        index: true,
+        element: <Navigate to={ROUTES.USERS} replace />,
+      },
       {
         path: ROUTES.USERS,
         element: (
